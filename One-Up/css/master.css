@@ -112,9 +112,21 @@ ul.burger-menu li a{
 .header-text > h1 {
   padding: 0px 20px 0px 20px;
   color: #FFFFFF;
-  font-family: 'Tourney', cursive;
   font-size: 6rem;
+}
+
+@media screen and (max-width: 899px) {.header-text > h1 {font-size: 4rem;}}
+@media screen and (max-width: 699px) {.header-text {flex-direction: column;}}
+@media screen and (max-width: 549px) {.header-text > h1 {font-size: 2.6rem;}}
+
+.header-text > h1:first-child {
+  font-family: 'Tourney', cursive;
   font-weight: 400;
+}
+
+.header-text > h1:last-child {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 300;
 }
 
 main {
