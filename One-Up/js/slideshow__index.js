@@ -21,7 +21,6 @@ function showSlides(n, no) {
 function changeHeight() {
   let title = document.querySelector(".slideshow-title");
   let titleHeight = title.clientHeight;
-  // console.log(titleHeight)
   let classes = document.getElementsByClassName("slideshow__button");
   for(let i = 0; i < classes.length; i++) {
     classes.item(i).style.top = "calc(50% + " + (titleHeight / 2) + "px)";

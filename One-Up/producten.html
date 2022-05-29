@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/master.css">
   <link rel="stylesheet" type="text/css" href="css/producten.css">
+  <link rel="stylesheet" type="text/css" href="css/slideshow.css">
   <script type="text/javascript" src="js/burger-menu.js"></script>
   <title>One-Up</title>
 </head>
@@ -46,9 +47,81 @@
     <section class="header-text"><h1>One-Up</h1><h1>Producten</h1></section>
   </header>
 
-  <main>
+  <main class="container">
+    <section class="container__sterke-tekst">
+      <h1 class="pagina-titel">Een sterke tekst</h1>
+      <p class="sterke-tekst__p">Een sterke tekst een sterke tekst een sterke tekst een sterke tekst een sterke tekst een sterke tekst
+        een sterke tekst een sterke tekst een sterke tekst een sterke tekst een sterke tekst een sterke tekst een sterke tekst.</p>
+    </section>
 
+    <section class="container__producten">
+
+      <div class="slideshow-container">
+        <button class="slideshow__button slideshow__button--left" onclick="plusSlides(-1, 0)">
+          <img src="images/master/left.png">
+        </button>
+        <div class="mySlides3">
+          <img class="slideshow-image" src="images/producten/placeholder-square-1.png" alt="">
+        </div>
+        <div class="mySlides3">
+          <img class="slideshow-image" src="images/producten/placeholder-square-2.png" alt="">
+        </div>
+        <div class="mySlides3">
+          <img class="slideshow-image" src="images/producten/placeholder-square-3.png" alt="">
+        </div>
+        <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 0)">
+          <img src="images/master/right.png" alt="">
+        </button>
+      </div>
+
+      <article class="producten__article">
+        <h1>Algemene Ingrediënten One-Up</h1>
+        <div class="producten__div padding-h2">
+          <img class="producten__img" src="images/producten/exclamation-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <h2>Let op, niet elk drankje bevat al deze ingrediënten.</h2>
+        </div>
+
+        <div class="producten__div padding-p">
+          <img class="producten__img" src="images/producten/circle-small-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <p>Cafeïne</p>
+        </div>
+
+        <div class="producten__div padding-p">
+          <img class="producten__img" src="images/producten/circle-small-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <p>B-vitamines</p>
+        </div>
+
+        <div class="producten__div padding-p">
+          <img class="producten__img" src="images/producten/circle-small-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <p>Taurine</p>
+        </div>
+
+        <div class="producten__div padding-p">
+          <img class="producten__img" src="images/producten/circle-small-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <p>L-carnitine</p>
+        </div>
+
+        <div class="producten__div padding-p">
+          <img class="producten__img" src="images/producten/circle-small-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <p>Guarana-extract</p>
+        </div>
+
+        <div class="producten__div padding-p">
+          <img class="producten__img" src="images/producten/circle-small-icon.png" alt="">
+          <div class="padding-icon"></div>
+          <p>Glucuronolacton</p>
+        </div>
+      </article>
+    </section>
   </main>
+
+  <script type="text/javascript" src="js/slideshow__producten.js"></script>
 
   <footer>
     <section class="footer-row1 footer-flex">
