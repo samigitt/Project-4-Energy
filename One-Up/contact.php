@@ -1,5 +1,5 @@
-<?php 
-require("php/functies.php"); 
+<?php
+require("php/functies.php");
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +22,30 @@ require("php/functies.php");
 <body>
   <?php get_header(); ?>
 
-  <main>
+  <main class="container">
+    <section class="titel">
+      <h1 class="pagina-titel">Contact Formulier</h1>
+      <h2 class="pagina-subtitel">Stuur ons een bericht!</h2>
+    </section>
 
+    <section class="content">
+      <section class="content__text">
+
+        <form>
+          <input type="text" name="naam" placeholder="Naam" required>
+          <input type="text" name="e-mail" placeholder="E-mail" required>
+          <input type="text" name="cc" placeholder="Cc">
+          <input type="text" name="typebericht" placeholder="Type Bericht" required>
+          <input type="text" name="onderwerp" placeholder="Onderwerp" required>
+          <input type="text" name="bericht" placeholder="Bericht" required>
+          <input type="submit" name="submit" value="Verzenden">
+        </form>
+
+      </section>
+
+      <img class="content__img" src="images/contact/message.png" alt="">
+
+    </section>
   </main>
 
   <?php get_footer(); ?>
