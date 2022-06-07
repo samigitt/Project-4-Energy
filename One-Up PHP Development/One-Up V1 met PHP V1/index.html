@@ -1,7 +1,3 @@
-<?php 
-require("php/functies.php"); 
-?>
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -15,20 +11,47 @@ require("php/functies.php");
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/master.css">
   <link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="css/slideshow.css">
   <script type="text/javascript" src="js/burger-menu.js"></script>
   <title>One-Up</title>
 </head>
 
 <body>
-  <?php get_header(); ?>
+  <header class="header">
+    <nav>
+      <div>
+        <a class="burger-menu-icon" onclick="clickBurgerMenu('aan')"><img class="small-icon hover" src="images/master/burger-menu-icon.png" alt=""></a>
+        <a class="inloggen-button" href="php/login.php">Inloggen</a>
+      </div>
+
+      <ul class="burger-menu" id="show-menu">
+        <li>
+          <a onclick="clickBurgerMenu('uit')"><img class="small-icon hover" src="images/master/cross-icon.png" alt=""></a>
+        </li>
+
+        <li><a href="#">Home</a><li>
+
+        <li><a href="#">Producten</a><li>
+
+        <li><a href="#">Evenementen</a><li>
+
+        <li><a href="#">Ariesten</a><li>
+
+        <li><a href="#">Aanbiedingen</a><li>
+
+        <li><a href="#">Over Ons</a><li>
+
+        <li><a href="#">Contact</a><li>
+      </ul>
+    </nav>
+    <section class="header-text"><h1>One-Up</h1><h1>een extra leven</h1></section>
+  </header>
 
   <main class="container">
 
     <div class="slideshow-container">
       <h1 class="slideshow-title">Huidige Aanbiedingen</h1>
       <button class="slideshow__button slideshow__button--left" onclick="plusSlides(-1, 0)">
-        <img src="images/master/left.png">
+        <img src="images/index/left.png">
       </button>
       <div class="mySlides1">
         <img class="slideshow-image" src="images/index/aanbieding-1.png" alt="">
@@ -40,14 +63,14 @@ require("php/functies.php");
         <img class="slideshow-image" src="images/index/aanbieding-3.png" alt="">
       </div>
       <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 0)">
-        <img src="images/master/right.png" alt="">
+        <img src="images/index/right.png" alt="">
       </button>
     </div>
 
     <div class="slideshow-container">
       <h1 class="slideshow-title">Komende Evenementen</h1>
       <button class="slideshow__button slideshow__button--left" onclick="plusSlides(-1, 1)">
-        <img src="images/master/left.png">
+        <img src="images/index/left.png">
       </button>
       <div class="mySlides2">
         <img class="slideshow-image" src="images/index/evenement-1.png" alt="">
@@ -62,15 +85,27 @@ require("php/functies.php");
         <a class="slideshow__details" href="#">Details</a>
       </div>
       <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 1)">
-        <img src="images/master/right.png" alt="">
+        <img src="images/index/right.png" alt="">
       </button>
     </div>
 
   </main>
 
-  <script type="text/javascript" src="js/slideshow__index.js"></script>
+  <script type="text/javascript" src="js/slideshow.js"></script>
 
-  <?php get_footer(); ?>
+  <footer>
+    <section class="footer-row1 footer-flex">
+      <a class="footer-padding">Copyright</a>
+      <a class="footer-padding">Disclaimer</a>
+    </section>
+
+    <section class="footer-row2 footer-flex">
+      <a class="footer-padding-small"><img class="small-icon" src="images/master/facebook.png" alt=""></a>
+      <a class="footer-padding-small"><img class="small-icon" src="images/master/instagram.png" alt=""></a>
+      <a class="footer-padding-small"><img class="small-icon" src="images/master/twitter.png" alt=""></a>
+      <a class="footer-padding-small"><img class="small-icon" src="images/master/tiktok.png" alt=""></a>
+    </section>
+  </footer>
 
 </body>
 </html>

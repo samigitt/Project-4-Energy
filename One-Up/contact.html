@@ -1,3 +1,7 @@
+<?php
+require("php/functies.php");
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -16,53 +20,35 @@
 </head>
 
 <body>
-  <header class="header">
-    <nav>
-      <div>
-        <a class="burger-menu-icon" onclick="clickBurgerMenu('aan')"><img class="small-icon hover" src="images/master/burger-menu-icon.png" alt=""></a>
-        <a class="inloggen-button" href="#">Inloggen</a>
-      </div>
+  <?php get_header(); ?>
 
-      <ul class="burger-menu" id="show-menu">
-        <li>
-          <a onclick="clickBurgerMenu('uit')"><img class="small-icon hover" src="images/master/cross-icon.png" alt=""></a>
-        </li>
+  <main class="container">
+    <section class="titel">
+      <h1 class="pagina-titel">Contact Formulier</h1>
+      <h2 class="pagina-subtitel">Stuur ons een bericht!</h2>
+    </section>
 
-        <li><a href="index.html">Home</a><li>
+    <section class="content">
+      <section class="content__text">
 
-        <li><a href="producten.html">Producten</a><li>
+        <form>
+          <input type="text" name="naam" placeholder="Naam" required>
+          <input type="text" name="e-mail" placeholder="E-mail" required>
+          <input type="text" name="cc" placeholder="Cc">
+          <input type="text" name="typebericht" placeholder="Type Bericht" required>
+          <input type="text" name="onderwerp" placeholder="Onderwerp" required>
+          <input type="text" name="bericht" placeholder="Bericht" required>
+          <input type="submit" name="submit" value="Verzenden">
+        </form>
 
-        <li><a href="evenementen.html">Evenementen</a><li>
+      </section>
 
-        <li><a href="artiesten.html">Ariesten</a><li>
+      <img class="content__img" src="images/contact/message.png" alt="">
 
-        <li><a href="aanbiedingen.html">Aanbiedingen</a><li>
-
-        <li><a href="overons.html">Over Ons</a><li>
-
-        <li><a href="contact.html">Contact</a><li>
-      </ul>
-    </nav>
-    <section class="header-text"><h1>One-Up</h1><h1>Contact</h1></section>
-  </header>
-
-  <main>
-
+    </section>
   </main>
 
-  <footer>
-    <section class="footer-row1 footer-flex">
-      <a class="footer-padding">Copyright</a>
-      <a class="footer-padding">Disclaimer</a>
-    </section>
-
-    <section class="footer-row2 footer-flex">
-      <a class="footer-padding-small"><img class="small-icon" src="images/master/facebook.png" alt=""></a>
-      <a class="footer-padding-small"><img class="small-icon" src="images/master/instagram.png" alt=""></a>
-      <a class="footer-padding-small"><img class="small-icon" src="images/master/twitter.png" alt=""></a>
-      <a class="footer-padding-small"><img class="small-icon" src="images/master/tiktok.png" alt=""></a>
-    </section>
-  </footer>
+  <?php get_footer(); ?>
 
 </body>
 </html>
