@@ -1,5 +1,5 @@
-<?php 
-require("php/functies.php"); 
+<?php
+require("php/functies.php");
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,31 @@ require("php/functies.php");
   <main class="container">
 
     <div class="extra-container">
+      <?php
+        require('dbconnect.php');
 
+        // $username = trim($_SESSION['user']);
+        // $password = trim($_SESSION['pass']);
+
+        $sql = "SELECT * FROM gebruikers WHERE username = 'admin'";
+
+        if ($result = $conn->query($sql)) {
+          $rowresult = $result->fetch_row();
+          $toestemming = $rowresult[3];
+
+          if ($toestemming == 2) {
+            ?> <script type="text/javascript" src="js/extra-functies.js"> showExtraFuncties("ja"); </script><?php
+            $result->close();
+            echo "toestemming";
+          } else {
+            ?> <script type="text/javascript" src="js/extra-functies.js"> showExtraFuncties("nee"); </script><?php
+            $result->close();
+            echo "geen toestemming";
+          }
+        }
+      ?>
+
+      <a class="bewerken-button extra-functies" href="#">Evenementen Bewerken</a>
       <h1 class="pagina-titel">Komende Evenementen</h1>
 
       <div class="filteren">
