@@ -1,5 +1,5 @@
-<?php 
-require("php/functies.php"); 
+<?php
+require("php/functies.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +26,23 @@ require("php/functies.php");
   <main class="container">
 
     <div class="slideshow-container">
+      <?php
+        require('dbconnect.php');
+      ?>
       <h1 class="slideshow-title">Huidige Aanbiedingen</h1>
       <button class="slideshow__button slideshow__button--left" onclick="plusSlides(-1, 0)">
         <img src="images/master/left.png">
       </button>
       <div class="mySlides1">
-        <img class="slideshow-image" src="images/index/aanbieding-1.png" alt="">
+        <?php
+          $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 1";
+
+          if ($result = $conn->query($sql)) {
+            while ($row = $result->fetch_object()) {
+              ?><img class="slideshow-image" src="<?php$row->afbeelding?>" alt=""><?php
+            }
+          }
+        ?>
       </div>
       <div class="mySlides1">
         <img class="slideshow-image" src="images/index/aanbieding-2.png" alt="">

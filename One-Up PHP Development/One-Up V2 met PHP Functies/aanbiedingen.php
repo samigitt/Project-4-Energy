@@ -1,5 +1,5 @@
-<?php 
-require("php/functies.php"); 
+<?php
+require("php/functies.php");
 ?>
 
 <!DOCTYPE html>
