@@ -26,7 +26,7 @@ function get_header($headerTekst = "een extra leven", $loginPagina = false)
 
     $headerOneUp = "One-Up";
     if ($loginPagina) {
-        $headerOneUp = "Log-In";
+        $headerOneUp = "Inloggen";
     }
     else {
         if ($_SESSION['ingelogd']) {
