@@ -1,5 +1,5 @@
 <?php
-require("php/functies.php");
+require("php/functies.php"); 
 require("php/dbconnect.php");
 
 if(isset($_SESSION['ingelogd']) && $_SESSION['ingelogd']){
@@ -57,21 +57,23 @@ if (isset($_POST['submit'])) {
         <link rel="stylesheet" type="text/css" href="css/master.css">
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <script type="text/javascript" src="js/burger-menu.js"></script>
-        <title>One-Up</title>
+        <title>Log in</title>
     </head>
 
     <body>
-        <?php get_header(null,true); ?>
+        <?php get_header(null,false,"Inloggen"); ?>
 
         <main class="container">
             <div class="loginform-container">
-                <h1 class="loginform__h1">Log in op uw account</h1>
-                <p class="loginform__p">Nog geen account? Klik <a href="signup.php">hier</a> om te registreren!</p>
+                <h1>Log in uw account</h1>
                 <form method="POST">
                     <?php echo "<strong>" . $error . "</strong><br>"; ?><br>
-                    <input type="text" name="username" placeholder="Gebruikersnaam"><br>
-                    <input type="password" name="password" placeholder="Wachtwoord"><br><br>
-                    <input type="submit" name="submit" value="Inloggen" class="login-button">
+                    <label>Gebruikersnaam: </label><br><input type="text" name="username" /><br>
+                    <label>Wachtwoord: </label><br><input type="password" name="password" /><br><br>
+                    <div class="loginform-buttons-container">
+                        <input type="submit" name="submit" value="Inloggen" class="login-button" />
+                        <a href="signup.php">Maak Account</a>
+                    </div>
                 </form>
             </div>
         </main>
