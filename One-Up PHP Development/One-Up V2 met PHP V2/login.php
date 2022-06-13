@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     </head>
 
     <body>
-        <?php get_header(null,true); ?>
+        <?php get_header(null,false,"Inloggen"); ?>
 
         <main class="container">
             <div class="loginform-container">
