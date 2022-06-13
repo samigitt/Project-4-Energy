@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
     </head>
 
     <body>
-        <?php get_header(); ?>
+        <?php get_header(null,true,"Registreren"); ?>
 
         <main class="container">
             <div class="loginform-container">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-function get_header($headerTekst = "een extra leven", $loginPagina = false)
+function get_header($headerTekst = "een extra leven", $loginKnop = true, $headerOneUp = "One-Up")
 {
     if (!isset($_SESSION['ingelogd'])) {
         $_SESSION['ingelogd'] = false;
@@ -24,11 +24,7 @@ function get_header($headerTekst = "een extra leven", $loginPagina = false)
                 <a class="burger-menu-icon" onclick="clickBurgerMenu(' . "'aan'" . ')"><img class="small-icon hover" src="images/master/burger-menu-icon.png" alt=""></a>
     ';
 
-    $headerOneUp = "One-Up";
-    if ($loginPagina) {
-        $headerOneUp = "Inloggen";
-    }
-    else {
+    if ($loginKnop) {
         if ($_SESSION['ingelogd']) {
             echo '
                 <p class="gebruikersnaam-header">' . $_SESSION['username'] . '</p>
