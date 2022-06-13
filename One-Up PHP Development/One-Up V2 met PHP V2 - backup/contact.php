@@ -14,7 +14,7 @@ require("php/functies.php");
   <link href="https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/master.css">
-  <link rel="stylesheet" type="text/css" href="css/aanbiedingen.css">
+  <link rel="stylesheet" type="text/css" href="css/contact.css">
   <script type="text/javascript" src="js/burger-menu.js"></script>
   <title>One-Up</title>
 </head>
@@ -23,18 +23,28 @@ require("php/functies.php");
   <?php get_header(); ?>
 
   <main class="container">
-    <section class="row-1">
-        <h1 class="pagina-titel">Huidige Aanbieding</h1>
-        <img class="row-1__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
+    <section class="titel">
+      <h1 class="pagina-titel">Contact Formulier</h1>
+      <h2 class="pagina-subtitel">Stuur ons een bericht!</h2>
     </section>
 
-    <section class="row-2">
-      <h1 class="pagina-titel">Komende Aanbiedingen</h1>
-      <div class="row-2__images">
-        <img class="row-2__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
-        <img class="row-2__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
-        <img class="row-2__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
-      </div>
+    <section class="content">
+      <section class="content__text">
+
+        <form>
+          <input type="text" name="naam" placeholder="Naam" required>
+          <input type="text" name="e-mail" placeholder="E-mail" required>
+          <input type="text" name="cc" placeholder="Cc">
+          <input type="text" name="typebericht" placeholder="Type Bericht" required>
+          <input type="text" name="onderwerp" placeholder="Onderwerp" required>
+          <input type="text" name="bericht" placeholder="Bericht" required>
+          <input type="submit" name="submit" value="Verzenden">
+        </form>
+
+      </section>
+
+      <img class="content__img" src="images/contact/message.png" alt="">
+
     </section>
   </main>
 
