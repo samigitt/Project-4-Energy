@@ -1,5 +1,5 @@
-<?php
-require("php/functies.php");
+<?php 
+require("php/functies.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ require("php/functies.php");
 </head>
 
 <body>
-  <?php get_header(); ?>
+  <?php get_header("aanbiedingen"); ?>
 
   <main class="container">
     <section class="row-1">
