@@ -39,7 +39,7 @@ require("php/functies.php");
 
           if ($result = $conn->query($sql)) {
             while ($row = $result->fetch_assoc()) {
-              echo $row['afbeelding'];
+              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
             }
           }
         ?>
@@ -50,7 +50,7 @@ require("php/functies.php");
 
           if ($result = $conn->query($sql)) {
             while ($row = $result->fetch_assoc()) {
-              echo $row['afbeelding'];
+              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
             }
           }
         ?>
@@ -61,7 +61,7 @@ require("php/functies.php");
 
           if ($result = $conn->query($sql)) {
             while ($row = $result->fetch_assoc()) {
-              echo $row['afbeelding'];
+              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
             }
           }
         ?>
@@ -82,7 +82,7 @@ require("php/functies.php");
 
           if ($result = $conn->query($sql)) {
             while ($row = $result->fetch_assoc()) {
-              echo $row['afbeelding'];
+              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
             }
           }
         ?>
@@ -94,7 +94,7 @@ require("php/functies.php");
 
           if ($result = $conn->query($sql)) {
             while ($row = $result->fetch_assoc()) {
-              echo $row['afbeelding'];
+              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
             }
           }
         ?>
@@ -106,7 +106,7 @@ require("php/functies.php");
 
           if ($result = $conn->query($sql)) {
             while ($row = $result->fetch_assoc()) {
-              echo $row['afbeelding'];
+              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
             }
           }
         ?>
