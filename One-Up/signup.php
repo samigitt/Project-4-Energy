@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
         <link rel="stylesheet" type="text/css" href="css/master.css">
         <link rel="stylesheet" type="text/css" href="css/signup.css">
         <script type="text/javascript" src="js/burger-menu.js"></script>
-        <title>Log in</title>
+        <title>One-Up</title>
     </head>
 
     <body>
@@ -75,13 +75,13 @@ if (isset($_POST['submit'])) {
 
         <main class="container">
             <div class="loginform-container">
-                <h1>Maak nieuw account aan</h1>
+                <h1>Maak uw account aan</h1>
                 <form method="POST">
-                    <?php echo "<strong>" . $error . "</strong>"; ?><br>
-                    <label>Gebruikersnaam: </label><br><input type="text" name="username" value=<?php if(!empty($_POST['username'])){echo "'" . $_POST['username'] . "'";} ?> ><br>
-                    <label>Wachtwoord: </label><br><input type="password" name="password" /><br><br>
-                    <label>Herhaal wachtwoord: </label><br><input type="password" name="password2" /><br><br>
-                    <input type="submit" name="submit" value="Maak aan" />
+                    <?php echo "<strong>" . $error . "</strong>"; ?><br><br>
+                    <input type="text" name="username" placeholder="Gebruikersnaam" value=<?php if(!empty($_POST['username'])){echo "'" . $_POST['username'] . "'";} ?> ><br>
+                    <input type="password" name="password" placeholder="Wachtwoord"><br>
+                    <input type="password" name="password2" placeholder="Herhaal Wachtwoord"><br><br>
+                    <input type="submit" name="submit" value="Registreren">
                 </form>
             </div>
         </main>
