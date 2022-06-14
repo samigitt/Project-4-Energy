@@ -1,30 +1,32 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (orientation: portrait) {
-  .container {
-    flex-direction: column;
-  }
+    .container {
+        flex-direction: column;
+    }
 }
 
 .loginform-container {
-  max-width: 500px;
-  min-width: 400px;
-  position: relative;
-  margin: 50px 50px;
+    max-width: 500px;
+    min-width: 400px;
+    position: relative;
+    margin: 50px 50px;
 }
 
 .loginform__h1 {
     padding: 0px 0px 10px 0px;
-  }
-  .loginform__p > a {
+}
+
+.loginform__p>a {
     color: #FF2DF5;
-  }
-  input {
+}
+
+input {
     width: 100%;
     color: #4A4A4A;
     background-color: #E2E2E2;
@@ -32,9 +34,10 @@
     border-radius: 50px;
     padding: 15px 0px 15px 20px;
     margin-bottom: 20px;
-    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.30);
-  }
-  input[type=submit] {
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.30);
+}
+
+input[type=submit] {
     width: 120px;
     color: #000000;
     background-color: #21FFE1;
@@ -45,8 +48,9 @@
     float: right;
     font-size: 1em;
     transition: 0.3s;
-  }
-  input[type=submit]:hover {
+}
+
+input[type=submit]:hover {
     cursor: pointer;
     background-color: #FF2DF5;
-  }
+}
