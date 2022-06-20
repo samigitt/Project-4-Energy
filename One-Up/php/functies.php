@@ -27,7 +27,7 @@ function get_header($headerTekst = "een extra leven", $loginKnop = true, $header
     if ($loginKnop) {
         if ($_SESSION['ingelogd']) {
             echo '
-                <p class="gebruikersnaam-header">' . $_SESSION['username'] . '</p>
+                <a class="gebruikersnaam-header" href="beheer account.php">' . $_SESSION['username'] . '</a>
             ';
         }
         echo '
