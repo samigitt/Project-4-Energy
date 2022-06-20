@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <?php
 require("php/functies.php");
 ?>
 
 <?php
-  $alertAanbieding = "";
+  $alertAanbieding = "Geen comment";
   if (isset($_POST['submit-aanbieding-add'])) {
-    if (!empty($_POST['aanbieding-id'])) {
+    if (!empty($_POST['aanbieding-titel'])) {
       require('dbconnect.php');
 
       $aanbiedingId = $_POST['aanbieding-id'];
@@ -14,24 +15,53 @@ require("php/functies.php");
       $aanbiedingEinddatum = $_POST['aanbieding-einddatum'];
       $aanbiedingOmschrijving = trim($_POST['aanbieding-omschrijving']);
       $aanbiedingAfbeelding = trim($_POST['aanbieding-afbeelding']);
-      $aanbiedingArtiestid = $_POST['aanbieding-artiest-id'];
+      $aanbiedingArtiestId = $_POST['aanbieding-artiest-id'];
 
-      $sql = "INSERT INTO evenementen VALUES ('$aanbiedingId', '$aanbiedingTitel', '$aanbiedingBegindatum',
-        '$aanbiedingEinddatum', '$aanbiedingOmschrijving', '$aanbiedingAfbeelding', '$aanbiedingArtiestid');";
+      $sql = "INSERT INTO aanbiedingen VALUES (NULL, '$aanbiedingTitel', '$aanbiedingBegindatum', '$aanbiedingEinddatum',
+      '$aanbiedingOmschrijving', '$aanbiedingAfbeelding', '$aanbiedingArtiestId')";
 
-      if ($conn->query($sql) === TRUE) {
+      if ($conn->query($sql)) {
         $alertAanbieding = "Aanbieding Toegevoegt";
       } else {
         $alertAanbieding = "Toevoegen Gefaalt";
       }
       $conn->close();
+    } else {
+      $alertAanbieding = "Vul een Titel in";
     }
   }
 
+  $alertArtiest = "Geen comment";
+  if (isset($_POST['submit-artiest-add'])) {
+    if (!empty($_POST['artiest-naam'])) {
+      require('dbconnect.php');
+
+      $artiestId = $_POST['artiest-id'];
+      $artiestNaam = trim($_POST['artiest-naam']);
+      $artiestAchternaam = trim($_POST['artiest-achternaam']);
+      $artiestVoornaam = trim($_POST['artiest-voornaam']);
+      $artiestTussenvoegsel = trim($_POST['artiest-tussenvoegsel']);
+      $artiestStatement = trim($_POST['artiest-statement']);
+      $artiestTelefoon = $_POST['artiest-telefoon'];
+      $artiestActief = $_POST['artiest-actief'];
+
+      $sql = "INSERT INTO aanbiedingen VALUES (NULL, '$aanbiedingTitel', '$aanbiedingBegindatum', '$aanbiedingEinddatum',
+      '$aanbiedingOmschrijving', '$aanbiedingAfbeelding', '$aanbiedingArtiestId')";
+
+      if ($conn->query($sql)) {
+        $alertAanbieding = "Aanbieding Toegevoegt";
+      } else {
+        $alertAanbieding = "Toevoegen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertAanbieding = "Vul een Titel in";
+    }
+  }
 
 ?>
 
-<!DOCTYPE html>
+
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
@@ -62,9 +92,9 @@ require("php/functies.php");
     <section class="content">
       <section class="content__text">
 
-        <form action="bewerken.php" method="post">
+        <form action="bewerken.php" method="POST">
           <h3>Aanbiedingen</h3><br>
-          <input type="number" name="aanbieding-id" placeholder="Id" required>
+          <input type="number" name="aanbieding-id" placeholder="Id">
           <input type="text" name="aanbieding-titel" placeholder="Titel">
           <input type="date" name="aanbieding-begindatum" placeholder="Begindatum yyyy-mm-dd">
           <input type="date" name="aanbieding-einddatum" placeholder="Einddatum yyyy-mm-dd">
@@ -81,9 +111,9 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="post">
+        <form action="bewerken.php" method="POST">
           <h3>Artiesten</h3><br>
-          <input type="number" name="artiest-id" placeholder="Id" required>
+          <input type="number" name="artiest-id" placeholder="Id">
           <input type="text" name="artiest-naam" placeholder="Naam">
           <input type="text" name="artiest-achternaam" placeholder="Achternaam">
           <input type="text" name="artiest-voornaam" placeholder="Voornaam">
@@ -94,15 +124,16 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-artiest-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-artiest-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-artiest-add" value="Toevoegen">
+          <?php echo $alertArtiest; ?>
         </form>
 
         <br>
         <br>
         <br>
 
-        <form action="bewerken.php" method="post">
+        <form action="bewerken.php" method="POST">
           <h3>Evenementen</h3><br>
-          <input type="number" name="evenement-id" placeholder="Id" required>
+          <input type="number" name="evenement-id" placeholder="Id">
           <input type="date" name="evenement-datum" placeholder="Datum">
           <input type="number" name="evenement-artiest-id" placeholder="Artiest Id">
           <input type="number" name="evenement-locatie-id" placeholder="Locatie Id">
@@ -116,9 +147,9 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="post">
+        <form action="bewerken.php" method="POST">
           <h3>Gebruikers</h3><br>
-          <input type="number" name="gebruiker-id" placeholder="Id" required>
+          <input type="number" name="gebruiker-id" placeholder="Id">
           <input type="text" name="gebruiker-gebruikersnaam" placeholder="Gebruikersnaam">
           <input type="password" name="gebruiker-wachtwoord" placeholder="Wachtwoord">
           <input type="number" name="gebruiker-toegang" placeholder="Level van Toegang">
@@ -131,9 +162,9 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="post">
+        <form action="bewerken.php" method="POST">
           <h3>Locaties</h3><br>
-          <input type="number" name="locatie-id" placeholder="Id" required>
+          <input type="number" name="locatie-id" placeholder="Id">
           <input type="text" name="locatie-plaats" placeholder="Plaatsnaam">
           <input type="text" name="locatie-gebouw" placeholder="Gebouw">
           <input type="text" name="locatie-adres" placeholder="Adres">
@@ -147,9 +178,9 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="post">
+        <form action="bewerken.php" method="POST">
           <h3>Reacties</h3><br>
-          <input type="number" name="reactie-id" placeholder="Id" required>
+          <input type="number" name="reactie-id" placeholder="Id">
           <input type="number" name="reactie-evenement-id" placeholder="Evenement Id">
           <input type="text" name="reactie-titel" placeholder="Titel">
           <input type="text" name="reactie-inhoud" placeholder="Bericht">
