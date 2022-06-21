@@ -27,23 +27,14 @@ require("php/functies.php");
     <div class="extra-container">
       <?php
         require('dbconnect.php');
-
-        // $username = trim($_SESSION['user']);
-        // $password = trim($_SESSION['pass']);
-
-        $sql = "SELECT * FROM gebruikers WHERE username = 'admin'";
-
-        if ($result = $conn->query($sql)) {
-          $rowresult = $result->fetch_row();
-          $toestemming = $rowresult[3];
-
-          if ($toestemming >= 2) {
-            ?> <a class="bewerken-button" href="bewerken.php">Evenementen Bewerken</a> <?php
-            $result->close();
-          } else {
-            $result->close();
-          }
+        
+        if ($_SESSION['permission'] >= 2) {
+          ?> <a class="bewerken-button" href="bewerken.php">Evenementen Bewerken</a> <?php
+          $result->close();
+        } else {
+          $result->close();
         }
+      }
       ?>
 
       <h1 class="pagina-titel">Komende Evenementen</h1>
