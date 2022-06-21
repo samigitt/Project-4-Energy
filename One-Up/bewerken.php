@@ -5,6 +5,12 @@ require("php/functies.php");
 
 <?php
   $alertAanbieding = "Geen comment";
+  $alertArtiest = "Geen comment";
+  $alertEvenement = "Geen comment";
+  $alertGebruiker = "Geen comment";
+  $alertLocatie = "Geen comment";
+  $alertReactie = "Geen comment";
+
   if (isset($_POST['submit-aanbieding-add'])) {
     if (!empty($_POST['aanbieding-titel'])) {
       require('dbconnect.php');
@@ -31,7 +37,6 @@ require("php/functies.php");
     }
   }
 
-  $alertArtiest = "Geen comment";
   if (isset($_POST['submit-artiest-add'])) {
     if (!empty($_POST['artiest-naam'])) {
       require('dbconnect.php');
@@ -45,20 +50,235 @@ require("php/functies.php");
       $artiestTelefoon = $_POST['artiest-telefoon'];
       $artiestActief = $_POST['artiest-actief'];
 
-      $sql = "INSERT INTO aanbiedingen VALUES (NULL, '$aanbiedingTitel', '$aanbiedingBegindatum', '$aanbiedingEinddatum',
-      '$aanbiedingOmschrijving', '$aanbiedingAfbeelding', '$aanbiedingArtiestId')";
+      $sql = "INSERT INTO artiesten VALUES (NULL, '$artiestNaam', '$artiestAchternaam', '$artiestVoornaam',
+      '$artiestTussenvoegsel', '$artiestStatement', '$artiestTelefoon', '$artiestActief')";
 
       if ($conn->query($sql)) {
-        $alertAanbieding = "Aanbieding Toegevoegt";
+        $alertArtiest = "Artiest Toegevoegt";
       } else {
-        $alertAanbieding = "Toevoegen Gefaalt";
+        $alertArtiest = "Toevoegen Gefaalt";
       }
       $conn->close();
     } else {
-      $alertAanbieding = "Vul een Titel in";
+      $alertArtiest = "Vul een Naam in";
     }
   }
 
+  if (isset($_POST['submit-evenement-add'])) {
+    if (!empty($_POST['evenement-artiest-id'])) {
+      require('dbconnect.php');
+
+      $evenementId = $_POST['evenement-id'];
+      $evenementDatum = $_POST['evenement-datum'];
+      $evenementArtiestId = $_POST['evenement-artiest-id'];
+      $evenementLocatieId = $_POST['evenement-locatie-id'];
+      $evenementMaxBezoekers = $_POST['evenement-max-bezoekers'];
+
+      $sql = "INSERT INTO evenementen VALUES (NULL, '$evenementDatum', '$evenementArtiestId', '$evenementLocatieId',
+      '$evenementMaxBezoekers')";
+
+      if ($conn->query($sql)) {
+        $alertEvenement = "Evenement Toegevoegt";
+      } else {
+        $alertEvenement = "Toevoegen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertEvenement = "Vul een Artiest Id in";
+    }
+  }
+
+  if (isset($_POST['submit-gebruiker-add'])) {
+    if (!empty($_POST['gebruiker-gebruikersnaam'])) {
+      require('dbconnect.php');
+
+      function safe($value){
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = htmlspecialchars($value);
+        return $value;
+      }
+
+      $gebruikerId = $_POST['gebruiker-id'];
+      $gebruikerNaam = safe($_POST['gebruiker-gebruikersnaam']);
+      $gebruikerWachtwoord = safe($_POST['gebruiker-wachtwoord']);
+      $gebruikerWachtwoord = $conn->real_escape_string($gebruikerWachtwoord);
+      $gebruikerToegang = $_POST['gebruiker-toegang'];
+
+      $sql = "INSERT INTO gebruikers VALUES (NULL, '$gebruikerNaam', '$gebruikerWachtwoord', '$gebruikerToegang')";
+
+      if ($conn->query($sql)) {
+        $alertGebruiker = "Gebruiker Toegevoegt";
+      } else {
+        $alertGebruiker = "Toevoegen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertGebruiker = "Vul een Gebruikersnaam in";
+    }
+  }
+
+  if (isset($_POST['submit-locatie-add'])) {
+    if (!empty($_POST['locatie-plaats'])) {
+      require('dbconnect.php');
+
+      $locatieId = $_POST['locatie-id'];
+      $locatiePlaats = trim($_POST['locatie-plaats']);
+      $locatieGebouw = trim($_POST['locatie-gebouw']);
+      $locatieAdres = trim($_POST['locatie-adres']);
+      $locatiePostcode = $_POST['locatie-postcode'];
+
+      $sql = "INSERT INTO locaties VALUES (NULL, '$locatiePlaats', '$locatieGebouw', '$locatieAdres',
+      '$locatiePostcode')";
+
+      if ($conn->query($sql)) {
+        $alertLocatie = "Locatie Toegevoegt";
+      } else {
+        $alertLocatie = "Toevoegen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertLocatie = "Vul een Plaatsnaam in";
+    }
+  }
+
+  if (isset($_POST['submit-reactie-add'])) {
+    if (!empty($_POST['reactie-titel'])) {
+      require('dbconnect.php');
+
+      $reactieId = $_POST['reactie-id'];
+      $reactieEvenementId = $_POST['reactie-evenement-id'];
+      $reactieTitel = trim($_POST['reactie-titel']);
+      $reactieInhoud = trim($_POST['reactie-inhoud']);
+      $reactieAuteur = trim($_POST['reactie-auteur']);
+
+      $sql = "INSERT INTO reacties VALUES (NULL, '$reactieEvenementId', '$reactieTitel', '$reactieInhoud',
+      '$reactieAuteur')";
+
+      if ($conn->query($sql)) {
+        $alertReactie = "Reactie Toegevoegt";
+      } else {
+        $alertReactie = "Toevoegen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertReactie = "Vul een Titel in";
+    }
+  }
+
+  if (isset($_POST['submit-aanbieding-delete'])) {
+    if (!empty($_POST['aanbieding-id'])) {
+      require('dbconnect.php');
+
+      $aanbiedingId = $_POST['aanbieding-id'];
+
+      $sql = "DELETE FROM aanbiedingen WHERE aanbiedingen_id = $aanbiedingId;";
+
+      if ($conn->query($sql)) {
+        $alertAanbieding = "Aanbieding Verwijderd";
+      } else {
+        $alertAanbieding = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertAanbieding = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-artiest-delete'])) {
+    if (!empty($_POST['artiest-id'])) {
+      require('dbconnect.php');
+
+      $artiestId = $_POST['artiest-id'];
+
+      $sql = "DELETE FROM artiesten WHERE artiest_id = $artiestId;";
+
+      if ($conn->query($sql)) {
+        $alertArtiest = "Artiest Verwijderd";
+      } else {
+        $alertArtiest = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertArtiest = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-evenement-delete'])) {
+    if (!empty($_POST['evenement-id'])) {
+      require('dbconnect.php');
+
+      $evenementId = $_POST['evenement-id'];
+
+      $sql = "DELETE FROM evenementen WHERE evenement_id = $evenementId;";
+
+      if ($conn->query($sql)) {
+        $alertEvenement = "Evenement Verwijderd";
+      } else {
+        $alertEvenement = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertEvenement = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-gebruiker-delete'])) {
+    if (!empty($_POST['gebruiker-id'])) {
+      require('dbconnect.php');
+
+      $gebruikerId = $_POST['gebruiker-id'];
+
+      $sql = "DELETE FROM gebruikers WHERE gebruiker_id = $gebruikerId;";
+
+      if ($conn->query($sql)) {
+        $alertGebruiker = "Gebruiker Verwijderd";
+      } else {
+        $alertGebruiker = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertGebruiker = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-locatie-delete'])) {
+    if (!empty($_POST['locatie-id'])) {
+      require('dbconnect.php');
+
+      $locatieId = $_POST['locatie-id'];
+
+      $sql = "DELETE FROM locaties WHERE locatie_id = $locatieId;";
+
+      if ($conn->query($sql)) {
+        $alertLocatie = "Locatie Verwijderd";
+      } else {
+        $alertLocatie = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertLocatie = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-reactie-delete'])) {
+    if (!empty($_POST['reactie-id'])) {
+      require('dbconnect.php');
+
+      $reactieId = $_POST['reactie-id'];
+
+      $sql = "DELETE FROM reacties WHERE reactie_id = $reactieId;";
+
+      if ($conn->query($sql)) {
+        $alertReactie = "Reactie Verwijderd";
+      } else {
+        $alertReactie = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertReactie = "Vul een Id in";
+    }
+  }
 ?>
 
 
@@ -104,7 +324,7 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-aanbieding-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-aanbieding-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-aanbieding-add" value="Toevoegen">
-          <?php echo $alertAanbieding; ?>
+          <p class="alert"><?php echo $alertAanbieding; ?></p>
         </form>
 
         <br>
@@ -124,7 +344,7 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-artiest-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-artiest-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-artiest-add" value="Toevoegen">
-          <?php echo $alertArtiest; ?>
+          <p class="alert"><?php echo $alertArtiest; ?></p>
         </form>
 
         <br>
@@ -141,6 +361,7 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-evenement-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-evenement-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-evenement-add" value="Toevoegen">
+          <p class="alert"><?php echo $alertEvenement; ?></p>
         </form>
 
         <br>
@@ -156,6 +377,7 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-gebruiker-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-gebruiker-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-gebruiker-add" value="Toevoegen">
+          <p class="alert"><?php echo $alertGebruiker; ?></p>
         </form>
 
         <br>
@@ -172,6 +394,7 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-locatie-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-locatie-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-locatie-add" value="Toevoegen">
+          <p class="alert"><?php echo $alertLocatie; ?></p>
         </form>
 
         <br>
@@ -188,6 +411,7 @@ require("php/functies.php");
           <input class="submit-button" type="submit" name="submit-reactie-delete" value="Verwijderen">
           <input class="submit-button" type="submit" name="submit-reactie-update" value="Bewerken">
           <input class="submit-button" type="submit" name="submit-reactie-add" value="Toevoegen">
+          <p class="alert"><?php echo $alertReactie; ?></p>
         </form>
 
       </section>
