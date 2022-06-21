@@ -40,10 +40,8 @@ require("php/functies.php");
           if ($toestemming >= 2) {
             ?> <a class="bewerken-button" href="bewerken.php">Evenementen Bewerken</a> <?php
             $result->close();
-            echo "toestemming";
           } else {
             $result->close();
-            echo "geen toestemming";
           }
         }
       ?>

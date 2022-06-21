@@ -4,13 +4,15 @@ require("php/functies.php");
 ?>
 
 <?php
-  $alertAanbieding = "Geen comment";
-  $alertArtiest = "Geen comment";
-  $alertEvenement = "Geen comment";
-  $alertGebruiker = "Geen comment";
-  $alertLocatie = "Geen comment";
-  $alertReactie = "Geen comment";
+  //alerts
+  $alertAanbieding = "";
+  $alertArtiest = "";
+  $alertEvenement = "";
+  $alertGebruiker = "";
+  $alertLocatie = "";
+  $alertReactie = "";
 
+  //add
   if (isset($_POST['submit-aanbieding-add'])) {
     if (!empty($_POST['aanbieding-titel'])) {
       require('dbconnect.php');
@@ -166,6 +168,7 @@ require("php/functies.php");
     }
   }
 
+  //delete
   if (isset($_POST['submit-aanbieding-delete'])) {
     if (!empty($_POST['aanbieding-id'])) {
       require('dbconnect.php');
@@ -273,6 +276,166 @@ require("php/functies.php");
         $alertReactie = "Reactie Verwijderd";
       } else {
         $alertReactie = "Verwijderen Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertReactie = "Vul een Id in";
+    }
+  }
+
+  //update
+  if (isset($_POST['submit-aanbieding-update'])) {
+    if (!empty($_POST['aanbieding-id'])) {
+      require('dbconnect.php');
+
+      $aanbiedingId = $_POST['aanbieding-id'];
+      $aanbiedingTitel = trim($_POST['aanbieding-titel']);
+      $aanbiedingBegindatum = $_POST['aanbieding-begindatum'];
+      $aanbiedingEinddatum = $_POST['aanbieding-einddatum'];
+      $aanbiedingOmschrijving = trim($_POST['aanbieding-omschrijving']);
+      $aanbiedingAfbeelding = trim($_POST['aanbieding-afbeelding']);
+      $aanbiedingArtiestId = $_POST['aanbieding-artiest-id'];
+
+      $sql = "UPDATE aanbiedingen SET titel = '$aanbiedingTitel', begindatum = '$aanbiedingBegindatum', einddatum = '$aanbiedingEinddatum',
+      omschrijving = '$aanbiedingOmschrijving', afbeelding = '$aanbiedingAfbeelding', artiest_id = '$aanbiedingArtiestId'
+      WHERE aanbiedingen_id = '$aanbiedingId'";
+
+      if ($conn->query($sql)) {
+        $alertAanbieding = "Aanbieding Geupdate";
+      } else {
+        $alertAanbieding = "Updaten Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertAanbieding = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-artiest-update'])) {
+    if (!empty($_POST['artiest-id'])) {
+      require('dbconnect.php');
+
+      $artiestId = $_POST['artiest-id'];
+      $artiestNaam = trim($_POST['artiest-naam']);
+      $artiestAchternaam = trim($_POST['artiest-achternaam']);
+      $artiestVoornaam = trim($_POST['artiest-voornaam']);
+      $artiestTussenvoegsel = trim($_POST['artiest-tussenvoegsel']);
+      $artiestStatement = trim($_POST['artiest-statement']);
+      $artiestTelefoon = $_POST['artiest-telefoon'];
+      $artiestActief = $_POST['artiest-actief'];
+
+      $sql = "UPDATE artiesten SET naam = '$artiestNaam', achternaam = '$artiestAchternaam',
+      voornaam = '$artiestVoornaam', tussenvoegsel = '$artiestTussenvoegsel', statement = '$artiestStatement',
+      telefoon = '$artiestTelefoon', actief = '$artiestActief'
+      WHERE artiest_id = '$artiestId'";
+
+      if ($conn->query($sql)) {
+        $alertArtiest = "Artiest Geupdate";
+      } else {
+        $alertArtiest = "Updaten Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertArtiest = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-evenement-update'])) {
+    if (!empty($_POST['evenement-id'])) {
+      require('dbconnect.php');
+
+      $evenementId = $_POST['evenement-id'];
+      $evenementDatum = $_POST['evenement-datum'];
+      $evenementArtiestId = $_POST['evenement-artiest-id'];
+      $evenementLocatieId = $_POST['evenement-locatie-id'];
+      $evenementMaxBezoekers = $_POST['evenement-max-bezoekers'];
+
+      $sql = "UPDATE evenementen SET datum = '$evenementDatum', artiest_id = '$evenementArtiestId',
+      locatie_id = '$evenementLocatieId', max_bezoekers = '$evenementMaxBezoekers' WHERE evenement_id = '$evenementId'";
+
+      if ($conn->query($sql)) {
+        $alertEvenement = "Evenement Geupdate";
+      } else {
+        $alertEvenement = "Updaten Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertEvenement = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-gebruiker-update'])) {
+    if (!empty($_POST['gebruiker-id'])) {
+      require('dbconnect.php');
+
+      function safe($value){
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = htmlspecialchars($value);
+        return $value;
+      }
+
+      $gebruikerId = $_POST['gebruiker-id'];
+      $gebruikerNaam = safe($_POST['gebruiker-gebruikersnaam']);
+      $gebruikerWachtwoord = safe($_POST['gebruiker-wachtwoord']);
+      $gebruikerWachtwoord = $conn->real_escape_string($gebruikerWachtwoord);
+      $gebruikerToegang = $_POST['gebruiker-toegang'];
+
+      $sql = "UPDATE gebruikers SET username = '$gebruikerNaam', password = '$gebruikerWachtwoord',
+      permission = '$gebruikerToegang' WHERE gebruiker_id = '$gebruikerId'";
+
+      if ($conn->query($sql)) {
+        $alertGebruiker = "Gebruiker Geupdate";
+      } else {
+        $alertGebruiker = "Updaten Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertGebruiker = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-locatie-update'])) {
+    if (!empty($_POST['locatie-id'])) {
+      require('dbconnect.php');
+
+      $locatieId = $_POST['locatie-id'];
+      $locatiePlaats = trim($_POST['locatie-plaats']);
+      $locatieGebouw = trim($_POST['locatie-gebouw']);
+      $locatieAdres = trim($_POST['locatie-adres']);
+      $locatiePostcode = $_POST['locatie-postcode'];
+
+      $sql = "UPDATE locaties SET plaatsnaam = '$locatiePlaats', gebouw = '$locatieGebouw',
+      adres = '$locatieAdres', postcode = '$locatiePostcode' WHERE locatie_id = '$locatieId'";
+
+      if ($conn->query($sql)) {
+        $alertLocatie = "Locatie Geupdate";
+      } else {
+        $alertLocatie = "Updaten Gefaalt";
+      }
+      $conn->close();
+    } else {
+      $alertLocatie = "Vul een Id in";
+    }
+  }
+
+  if (isset($_POST['submit-reactie-update'])) {
+    if (!empty($_POST['reactie-id'])) {
+      require('dbconnect.php');
+
+      $reactieId = $_POST['reactie-id'];
+      $reactieEvenementId = $_POST['reactie-evenement-id'];
+      $reactieTitel = trim($_POST['reactie-titel']);
+      $reactieInhoud = trim($_POST['reactie-inhoud']);
+      $reactieAuteur = trim($_POST['reactie-auteur']);
+
+      $sql = "UPDATE reacties SET evenement_id = '$reactieEvenementId', titel = '$reactieTitel',
+      inhoud = '$reactieInhoud', auteur = '$reactieAuteur' WHERE reactie_id = '$reactieId'";
+
+      if ($conn->query($sql)) {
+        $alertReactie = "Reactie Geupdate";
+      } else {
+        $alertReactie = "Updaten Gefaalt";
       }
       $conn->close();
     } else {
