@@ -54,3 +54,13 @@ input[type=submit]:hover {
     cursor: pointer;
     background-color: #FF2DF5;
 }
+
+
+.extra-margin {
+    margin: auto 10px;
+}
+
+.extra-margin-top {
+    margin-top: 20px;
+}
+
