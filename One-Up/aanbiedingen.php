@@ -21,7 +21,7 @@ require("php/functies.php");
 </head>
 
 <body>
-  <?php get_header(); ?>
+  <?php get_header("aanbiedingen"); ?>
 
   <main class="container">
     <section class="row-1">
