@@ -17,14 +17,13 @@ if (isset($_POST['submit'])) {
             if ($result = $conn->query($sql)) {
                 while ($row = $result->fetch_object()) {
                     $dbuser = $row->username;
-                    $lastid = $row->gebruiker_id;
                     if ($username == $dbuser) {
                         $error = "Gebruikersnaam in gebruik";
                     }
                 }
                 $result->close();
                 if ($error == "") {
-                    $sql = "INSERT INTO gebruikers (gebruiker_id, username, password, permission) VALUES ('" . $lastid + 1 . "','" . $username . "','" . $password . "','" . 1 . "')";
+                    $sql = "INSERT INTO gebruikers (username, password, permission) VALUES ('" . $username . "','" . $password . "','" . 1 . "')";
 
                     if ($conn->query($sql) === TRUE) {
                         $error = "Gebruiker successvol aangemaakt ";

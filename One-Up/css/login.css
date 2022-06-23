@@ -26,7 +26,7 @@
     color: #FF2DF5;
 }
 
-input {
+input, button {
     width: 100%;
     color: #4A4A4A;
     background-color: #E2E2E2;
@@ -37,7 +37,7 @@ input {
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.30);
 }
 
-input[type=submit] {
+input[type=submit], button{
     width: 120px;
     color: #000000;
     background-color: #21FFE1;
@@ -50,7 +50,7 @@ input[type=submit] {
     transition: 0.3s;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
     cursor: pointer;
     background-color: #FF2DF5;
 }
