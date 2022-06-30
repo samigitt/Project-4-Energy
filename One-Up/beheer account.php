@@ -23,7 +23,7 @@ if ($_SESSION['ingelogd'] != true) {
             href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/master.css">
-        <!--<link rel="stylesheet" type="text/css" href="css/login.css">-->
+        <link rel="stylesheet" type="text/css" href="css/login.css">
         <script type="text/javascript" src="js/burger-menu.js"></script>
         <title>One-Up</title>
     </head>
@@ -31,13 +31,19 @@ if ($_SESSION['ingelogd'] != true) {
     <body>
         <?php get_header(); ?>
         <main class="container">
-            <a href="verander gebruikersnaam.php" style="text-decoration: none;">Verander gebruikersnaam</a>
-            <br>
-            <br>
-            <a href="verander wachtwoord.php" style="text-decoration: none;">Verander wachtwoord</a>
-            <br>
-            <br>
-            <a href="verwijder account.php" style="color: red; text-decoration: none;">[Verwijder account]</a>
+            <ul class="instelling-ul">
+                <li><h1 class="loginform__h1">Instellingen</h1></li>
+                <li><a class="bewerken-button" href="verander gebruikersnaam.php">Verander gebruikersnaam</a></li>
+                <li><a class="bewerken-button" href="verander wachtwoord.php">Verander wachtwoord</a></li>
+                <li><a class="bewerken-button" href="verwijder account.php">Verwijder account</a></li>
+                <?php
+                require('dbconnect.php');
+                if ($_SESSION['ingelogd'] && $_SESSION['permission'] >= 2) {
+                ?> <li><a class="bewerken-button" href="bewerken2.php">Database Bewerken</a></li> <?php
+                }
+                ?>
+            </ul>
+            
         </main>
         <?php get_footer(); ?>
     </body>

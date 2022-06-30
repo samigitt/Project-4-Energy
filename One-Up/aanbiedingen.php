@@ -26,15 +26,15 @@ require("php/functies.php");
   <main class="container">
     <section class="row-1">
         <h1 class="pagina-titel">Huidige Aanbieding</h1>
-        <img class="row-1__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
+        <img class="row-1__img" src="images/aanbiedingen/aanbieding-1.png" alt="">
     </section>
 
     <section class="row-2">
       <h1 class="pagina-titel">Komende Aanbiedingen</h1>
       <div class="row-2__images">
-        <img class="row-2__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
-        <img class="row-2__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
-        <img class="row-2__img" src="images/aanbiedingen/placeholder-square-1.png" alt="">
+        <img class="row-2__img" src="images/aanbiedingen/aanbieding-2.png" alt="">
+        <img class="row-2__img" src="images/aanbiedingen/aanbieding-3.png" alt="">
+        <img class="row-2__img" src="images/aanbiedingen/aanbieding-4.png" alt="">
       </div>
     </section>
   </main>

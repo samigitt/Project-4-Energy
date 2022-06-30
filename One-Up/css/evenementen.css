@@ -128,3 +128,98 @@
     font-size: 12pt;
   }
 }
+
+/*filteren items*/
+input[type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+
+:root {
+  --black: #1a1a1a;
+  --white: #fff;
+  --blue: #FF2DF5;;
+}
+ 
+.filters {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+ 
+.filters * {
+  display: inline-block;
+}
+ 
+.filters label {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+  border-radius: 2rem;
+  min-width: 50px;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+ 
+.filters label:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+ 
+.posts {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+ 
+.posts .post {
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+ 
+.posts .post-title {
+  font-size: 1.3rem;
+}
+ 
+.posts .post-title:hover {
+  text-decoration: underline;
+}
+ 
+.posts figcaption {
+  padding: 1rem;
+}
+ 
+.posts .post-categories {
+  margin-bottom: 0.75rem;
+  font-size: .75rem;
+}
+ 
+.posts .post-categories * {
+  display: inline-block;
+}
+ 
+.posts .post-categories li {
+  margin-bottom: 0.2rem;
+}
+ 
+.posts .post-categories a {
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid;
+  line-height: normal;
+  background: all 0.1s;
+}
+ 
+.posts .post-categories a:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+/* filteren onclick knop */
+[value="All"]:checked ~ .posts .post:not([data-category~="All"]),
+[value="Naam"]:checked ~ .posts .post:not([data-category~="Naam"]),
+[value="Datum"]:checked ~ .posts .post:not([data-category~="Datum"]),
+[value="Tijd"]:checked ~ .posts .post:not([data-category~="Tijd"]),
+[value="Plaats"]:checked ~ .posts .post:not([data-category~="Plaats"]),
+[value="fullPage.js"]:checked ~ .posts .post:not([data-category~="fullPage.js"]) {
+  display: none;
+}

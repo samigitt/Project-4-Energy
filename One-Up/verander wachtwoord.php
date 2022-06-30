@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
         <main class="container">
             <div class="loginform-container">
                 <h1 class="loginform__h1">Verander uw wachtwoord</h1>
-                <form method="POST">
+                <form method="POST" action="verander wachtwoord.php">
                     <?php echo "<strong>" . $error . "</strong>"; ?><br>
                     <input type="password" name="password" placeholder="Oud wachtwoord"/><br>
                     <input type="password" name="password1" placeholder="Nieuw wachtwoord"/><br>

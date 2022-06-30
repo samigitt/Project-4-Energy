@@ -24,7 +24,7 @@ require("php/functies.php");
   <?php get_header(); ?>
 
   <main class="container">
-
+<!--
     <div class="slideshow-container">
       <?php
         require('dbconnect.php');
@@ -34,36 +34,36 @@ require("php/functies.php");
         <img src="images/master/left.png">
       </button>
       <div class="mySlides1">
-        <?php
+        <?php/*
           $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 1";
 
           if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
+            while ($row = $result->fetch_assoc()) {*/
+              ?> <img src="images/aanbiedingen/<?php /*echo $row['afbeelding'];?>" alt=""><?php
             }
-          }
+          }*/
         ?>
       </div>
       <div class="mySlides1">
-        <?php
+        <?php/*
           $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 2";
 
           if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
+            while ($row = $result->fetch_assoc()) {*/
+              ?> <img src="images/aanbiedingen/<?php /*echo $row['afbeelding'];?>" alt=""><?php
             }
-          }
+          }*/
         ?>
       </div>
       <div class="mySlides1">
-        <?php
+        <?php/*
           $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 3";
 
           if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
+            while ($row = $result->fetch_assoc()) {*/
+              ?> <img src="images/aanbiedingen/<?php /*echo $row['afbeelding'];?>" alt=""><?php
             }
-          }
+          }*/
         ?>
       </div>
       <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 0)">
@@ -77,38 +77,38 @@ require("php/functies.php");
         <img src="images/master/left.png">
       </button>
       <div class="mySlides2">
-        <?php
+        <?php/*
           $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 7";
 
           if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
+            while ($row = $result->fetch_assoc()) {*/
+              ?> <img src="images/aanbiedingen/<?php /*echo $row['afbeelding'];?>" alt=""><?php
             }
-          }
+          }*/
         ?>
         <a class="slideshow__details" href="#">Details</a>
       </div>
       <div class="mySlides2">
-        <?php
+        <?php/*
           $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 6";
 
           if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
+            while ($row = $result->fetch_assoc()) {*/
+              ?> <img src="images/aanbiedingen/<?php /*echo $row['afbeelding'];?>" alt=""><?php
             }
-          }
+          }*/
         ?>
         <a class="slideshow__details" href="#">Details</a>
       </div>
       <div class="mySlides2">
-        <?php
+        <?php/*
           $sql = "SELECT * FROM aanbiedingen WHERE aanbiedingen_id = 5";
 
           if ($result = $conn->query($sql)) {
-            while ($row = $result->fetch_assoc()) {
-              ?> <img src="images/aanbiedingen/<?php echo $row['afbeelding'];?>" alt=""><?php
+            while ($row = $result->fetch_assoc()) {*/
+              ?> <img src="images/aanbiedingen/<?php /*echo $row['afbeelding'];?>" alt=""><?php
             }
-          }
+          }*/
         ?>
         <a class="slideshow__details" href="#">Details</a>
       </div>
@@ -116,7 +116,51 @@ require("php/functies.php");
         <img src="images/master/right.png" alt="">
       </button>
     </div>
+-->
 
+
+
+
+<div class="slideshow-container">
+      <h1 class="slideshow-title">Huidige Aanbiedingen</h1>
+      <button class="slideshow__button slideshow__button--left" onclick="plusSlides(-1, 0)">
+        <img src="images/master/left.png">
+      </button>
+      <div class="mySlides1">
+        <img class="slideshow-image" src="images/index/aanbieding-1.png" alt="">
+      </div>
+      <div class="mySlides1">
+        <img class="slideshow-image" src="images/index/aanbieding-2.png" alt="">
+      </div>
+      <div class="mySlides1">
+        <img class="slideshow-image" src="images/index/aanbieding-3.png" alt="">
+      </div>
+      <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 0)">
+        <img src="images/master/right.png" alt="">
+      </button>
+    </div>
+
+    <div class="slideshow-container">
+      <h1 class="slideshow-title">Komende Evenementen</h1>
+      <button class="slideshow__button slideshow__button--left" onclick="plusSlides(-1, 1)">
+        <img src="images/master/left.png">
+      </button>
+      <div class="mySlides2">
+        <img class="slideshow-image" src="images/index/evenement-1.png" alt="">
+        <a class="slideshow__details" href="#">Details</a>
+      </div>
+      <div class="mySlides2">
+        <img class="slideshow-image" src="images/index/evenement-2.png" alt="">
+        <a class="slideshow__details" href="#">Details</a>
+      </div>
+      <div class="mySlides2">
+        <img class="slideshow-image" src="images/index/evenement-3.png" alt="">
+        <a class="slideshow__details" href="#">Details</a>
+      </div>
+      <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 1)">
+        <img src="images/master/right.png" alt="">
+      </button>
+    </div>
   </main>
 
   <script type="text/javascript" src="js/slideshow__index.js"></script>

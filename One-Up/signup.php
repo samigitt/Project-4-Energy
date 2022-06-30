@@ -17,14 +17,13 @@ if (isset($_POST['submit'])) {
             if ($result = $conn->query($sql)) {
                 while ($row = $result->fetch_object()) {
                     $dbuser = $row->username;
-                    $lastid = $row->gebruiker_id;
                     if ($username == $dbuser) {
                         $error = "Gebruikersnaam in gebruik";
                     }
                 }
                 $result->close();
                 if ($error == "") {
-                    $sql = "INSERT INTO gebruikers (gebruiker_id, username, password, permission) VALUES ('" . $lastid + 1 . "','" . $username . "','" . $password . "','" . 1 . "')";
+                    $sql = "INSERT INTO gebruikers (username, password, permission) VALUES ('" . $username . "','" . $password . "','" . 1 . "')";
 
                     if ($conn->query($sql) === TRUE) {
                         $error = "Gebruiker successvol aangemaakt ";
@@ -76,7 +75,7 @@ if (isset($_POST['submit'])) {
         <main class="container">
             <div class="loginform-container">
                 <h1>Maak uw account aan</h1>
-                <form method="POST">
+                <form method="POST" action="signup.php">
                     <?php echo "<strong>" . $error . "</strong>"; ?><br><br>
                     <input type="text" name="username" placeholder="Gebruikersnaam" value=<?php if(!empty($_POST['username'])){echo "'" . $_POST['username'] . "'";} ?> ><br>
                     <input type="password" name="password" placeholder="Wachtwoord"><br>

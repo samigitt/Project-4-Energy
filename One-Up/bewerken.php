@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <?php
-require("php/functies.php");
-?>
+// Database bewerk pagina 1.0 gemaakt door Erik
 
-<?php
+require("php/functies.php");
+
+if ($_SESSION['ingelogd'] != true) {
+  header("Location: login.php");
+} else if ($_SESSION['permission'] < 2) {
+  header("Location: beheer account.php");
+}
+
   //alerts
   $alertAanbieding = "";
   $alertArtiest = "";
@@ -15,7 +21,7 @@ require("php/functies.php");
   //add
   if (isset($_POST['submit-aanbieding-add'])) {
     if (!empty($_POST['aanbieding-titel'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $aanbiedingId = $_POST['aanbieding-id'];
       $aanbiedingTitel = trim($_POST['aanbieding-titel']);
@@ -41,7 +47,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-artiest-add'])) {
     if (!empty($_POST['artiest-naam'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $artiestId = $_POST['artiest-id'];
       $artiestNaam = trim($_POST['artiest-naam']);
@@ -68,7 +74,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-evenement-add'])) {
     if (!empty($_POST['evenement-artiest-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $evenementId = $_POST['evenement-id'];
       $evenementDatum = $_POST['evenement-datum'];
@@ -92,7 +98,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-gebruiker-add'])) {
     if (!empty($_POST['gebruiker-gebruikersnaam'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       function safe($value){
         $value = trim($value);
@@ -122,7 +128,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-locatie-add'])) {
     if (!empty($_POST['locatie-plaats'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $locatieId = $_POST['locatie-id'];
       $locatiePlaats = trim($_POST['locatie-plaats']);
@@ -146,7 +152,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-reactie-add'])) {
     if (!empty($_POST['reactie-titel'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $reactieId = $_POST['reactie-id'];
       $reactieEvenementId = $_POST['reactie-evenement-id'];
@@ -171,7 +177,7 @@ require("php/functies.php");
   //delete
   if (isset($_POST['submit-aanbieding-delete'])) {
     if (!empty($_POST['aanbieding-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $aanbiedingId = $_POST['aanbieding-id'];
 
@@ -190,7 +196,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-artiest-delete'])) {
     if (!empty($_POST['artiest-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $artiestId = $_POST['artiest-id'];
 
@@ -209,7 +215,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-evenement-delete'])) {
     if (!empty($_POST['evenement-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $evenementId = $_POST['evenement-id'];
 
@@ -228,7 +234,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-gebruiker-delete'])) {
     if (!empty($_POST['gebruiker-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $gebruikerId = $_POST['gebruiker-id'];
 
@@ -247,7 +253,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-locatie-delete'])) {
     if (!empty($_POST['locatie-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $locatieId = $_POST['locatie-id'];
 
@@ -266,7 +272,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-reactie-delete'])) {
     if (!empty($_POST['reactie-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $reactieId = $_POST['reactie-id'];
 
@@ -286,7 +292,7 @@ require("php/functies.php");
   //update
   if (isset($_POST['submit-aanbieding-update'])) {
     if (!empty($_POST['aanbieding-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $aanbiedingId = $_POST['aanbieding-id'];
       $aanbiedingTitel = trim($_POST['aanbieding-titel']);
@@ -313,7 +319,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-artiest-update'])) {
     if (!empty($_POST['artiest-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $artiestId = $_POST['artiest-id'];
       $artiestNaam = trim($_POST['artiest-naam']);
@@ -342,7 +348,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-evenement-update'])) {
     if (!empty($_POST['evenement-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $evenementId = $_POST['evenement-id'];
       $evenementDatum = $_POST['evenement-datum'];
@@ -366,7 +372,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-gebruiker-update'])) {
     if (!empty($_POST['gebruiker-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       function safe($value){
         $value = trim($value);
@@ -397,7 +403,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-locatie-update'])) {
     if (!empty($_POST['locatie-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $locatieId = $_POST['locatie-id'];
       $locatiePlaats = trim($_POST['locatie-plaats']);
@@ -421,7 +427,7 @@ require("php/functies.php");
 
   if (isset($_POST['submit-reactie-update'])) {
     if (!empty($_POST['reactie-id'])) {
-      require('dbconnect.php');
+      require('php/dbconnect.php');
 
       $reactieId = $_POST['reactie-id'];
       $reactieEvenementId = $_POST['reactie-evenement-id'];
@@ -475,7 +481,7 @@ require("php/functies.php");
     <section class="content">
       <section class="content__text">
 
-        <form action="bewerken.php" method="POST">
+        <form action="bewerken.php" method="POST" class="form-bewerken">
           <h3>Aanbiedingen</h3><br>
           <input type="number" name="aanbieding-id" placeholder="Id">
           <input type="text" name="aanbieding-titel" placeholder="Titel">
@@ -494,7 +500,7 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="POST">
+        <form action="bewerken.php" method="POST" class="form-bewerken">
           <h3>Artiesten</h3><br>
           <input type="number" name="artiest-id" placeholder="Id">
           <input type="text" name="artiest-naam" placeholder="Naam">
@@ -514,7 +520,7 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="POST">
+        <form action="bewerken.php" method="POST" class="form-bewerken">
           <h3>Evenementen</h3><br>
           <input type="number" name="evenement-id" placeholder="Id">
           <input type="date" name="evenement-datum" placeholder="Datum">
@@ -531,7 +537,7 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="POST">
+        <form action="bewerken.php" method="POST" class="form-bewerken">
           <h3>Gebruikers</h3><br>
           <input type="number" name="gebruiker-id" placeholder="Id">
           <input type="text" name="gebruiker-gebruikersnaam" placeholder="Gebruikersnaam">
@@ -547,7 +553,7 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="POST">
+        <form action="bewerken.php" method="POST" class="form-bewerken">
           <h3>Locaties</h3><br>
           <input type="number" name="locatie-id" placeholder="Id">
           <input type="text" name="locatie-plaats" placeholder="Plaatsnaam">
@@ -564,7 +570,7 @@ require("php/functies.php");
         <br>
         <br>
 
-        <form action="bewerken.php" method="POST">
+        <form action="bewerken.php" method="POST" class="form-bewerken">
           <h3>Reacties</h3><br>
           <input type="number" name="reactie-id" placeholder="Id">
           <input type="number" name="reactie-evenement-id" placeholder="Evenement Id">

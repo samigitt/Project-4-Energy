@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
         <main class="container">
             <div class="loginform-container">
                 <h1 class="loginform__h1">Verander uw gebruikersnaam</h2>
-                <form method="POST">
+                <form method="POST" action="verander gebruikersnaam.php">
                     <?php echo "<strong>" . $error . "</strong>"; ?><br>
                     <input type="text" name="username" placeholder="Nieuw gebruikersnaam"/><br>
                     <input type="password" name="password" placeholder="Wachtwoord"/><br><br>

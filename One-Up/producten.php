@@ -38,13 +38,16 @@ require("php/functies.php");
           <img src="images/master/left.png">
         </button>
         <div class="mySlides3">
-          <img class="slideshow-image" src="images/producten/placeholder-square-1.png" alt="">
+          <img class="slideshow-image" src="images/producten/blikje-blauw.png" alt="">
         </div>
         <div class="mySlides3">
-          <img class="slideshow-image" src="images/producten/placeholder-square-2.png" alt="">
+          <img class="slideshow-image" src="images/producten/blikje-geel.png" alt="">
         </div>
         <div class="mySlides3">
-          <img class="slideshow-image" src="images/producten/placeholder-square-3.png" alt="">
+          <img class="slideshow-image" src="images/producten/blikje-groen.png" alt="">
+        </div>
+        <div class="mySlides3">
+          <img class="slideshow-image" src="images/producten/blikje-rood.png" alt="">
         </div>
         <button class="slideshow__button slideshow__button--right" onclick="plusSlides(1, 0)">
           <img src="images/master/right.png" alt="">

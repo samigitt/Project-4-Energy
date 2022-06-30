@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
             <div class="loginform-container">
                 <h1 class="loginform__h1">Log in op uw account</h1>
                 <p class="loginform__p">Nog geen account? Klik <a href="signup.php">hier</a> om te registreren!</p>
-                <form method="POST">
+                <form method="POST" action="login.php">
                     <?php echo "<strong>" . $error . "</strong><br>"; ?><br>
                     <input type="text" name="username" placeholder="Gebruikersnaam"><br>
                     <input type="password" name="password" placeholder="Wachtwoord"><br><br>

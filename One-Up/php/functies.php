@@ -80,4 +80,12 @@ function get_footer()
     </footer>
     ';
 }
+
+function safe_string($string)
+{
+    //$string = trim($string);   // Ik gebruik zelf geen trim omdat het niet nodig is bij een password, je kunt namelijk bij een password de bolletjes tellen. -Danny
+    $string = stripslashes($string);
+    $string = htmlspecialchars($string);
+    return $string;
+}
 ?>

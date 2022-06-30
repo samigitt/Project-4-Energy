@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -11,18 +11,18 @@
     }
 }
 
-.loginform-container {
-    max-width: 500px;
+.form-container {
+    max-width: 100%;
     min-width: 400px;
     position: relative;
     margin: 50px 50px;
 }
 
-.loginform__h1 {
+.form__h1 {
     padding: 0px 0px 10px 0px;
 }
 
-.loginform__p>a {
+.form__p>a {
     color: #FF2DF5;
 }
 
@@ -33,11 +33,15 @@ input, button {
     border: 0px solid #000000;
     border-radius: 50px;
     padding: 15px 0px 15px 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.30);
 }
 
-input[type=submit], button {
+td>input, td>button {
+    padding: 5px 10px;
+}
+
+input[type=submit], button{
     width: 120px;
     color: #000000;
     background-color: #21FFE1;
@@ -45,9 +49,13 @@ input[type=submit], button {
     border-radius: 50px;
     padding: 15px 0px 15px 0px;
     margin-bottom: 0px;
-    float: right;
+    /*float: right;*/
     font-size: 1em;
     transition: 0.3s;
+}
+
+td>button {
+    padding: 5px 0px 5px 0px;
 }
 
 input[type=submit]:hover, button:hover {
@@ -59,22 +67,15 @@ input[type=submit]:hover, button:hover {
     margin: auto 10px;
 }
 
-.extra-margin-top {
-    margin-top: 60px;
+.update-knop {
+    margin-top: 40px;
+    padding: 15px 0px 15px 0px;
 }
 
-.instelling-ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+td, th {
+    padding: 10px;
 }
 
-.instelling-ul li a{
-    text-decoration: none;
-}
 
-.instelling-ul li {
-    margin-top: 30px;
-    display: flex;
-}
+
+
